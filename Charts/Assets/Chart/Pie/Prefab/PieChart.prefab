@@ -167,7 +167,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 7654736354476722907}
   label: {fileID: 7654736352939330673}
-  onSelectItem:
+  onPointerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerClick:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7654736353718147119
@@ -300,7 +312,20 @@ MonoBehaviour:
   labels:
     valueType: 1
     decimalCount: 0
-  onSelectItem:
+    location: 0.5
+  onItemPointerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onItemPointerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onItemPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onItemPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onItemPointerClick:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7654736354476722885

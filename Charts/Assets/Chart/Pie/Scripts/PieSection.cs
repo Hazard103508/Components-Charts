@@ -87,7 +87,7 @@ namespace Rosso.Charts.Pie
             {
                 float centerAngle = (rotation + ((this.item.PercentageVaue * 360) / 2)) * Mathf.Deg2Rad;
                 var direction = new Vector3(-Mathf.Sin(centerAngle), Mathf.Cos(centerAngle), 0f).normalized; // direcion hacia fuera del circulo que posee esta seccion del chart
-                label.transform.localPosition = direction * (Ratio * 0.5f);
+                label.transform.localPosition = direction * (Ratio * labels.location);
             }
 
             if (labels.valueType == Rosso.Charts.Pie.PieChart.ValueType.Percentage)

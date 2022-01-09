@@ -15,13 +15,13 @@ namespace Rosso.Demo.PieChart
         {
             chartA.Add_Item(new Item("Germany", 500, Color.green));
             chartA.Add_Item(new Item("United Kingdom", 450, Color.red));
-            chartA.Add_Item(new Item("France", 800, Color.blue, Color.white));
+            chartA.Add_Item(new Item("France", 800, Color.blue));
             chartA.Add_Item(new Item("Italy", 200, Color.yellow));
             chartA.Add_Item(new Item("Spain", 350, Color.gray));
             chartA.Draw();
 
-            chartB.Add_Item(new Item("Yes", 800, Color.cyan));
-            chartB.Add_Item(new Item("No", 350, Color.magenta, Color.white));
+            chartB.Add_Item(new Item("Yes", 800, new Color(255 / 255f, 69 / 255f, 0)));
+            chartB.Add_Item(new Item("No", 350, Color.white));
             chartB.Draw();
 
             chartC.Add_Item(new Item("Green", 0.589f, Color.green));

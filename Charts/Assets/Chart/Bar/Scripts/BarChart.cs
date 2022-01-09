@@ -11,20 +11,13 @@ namespace Rosso.Charts.Bar
     {
         #region Objects
         [SerializeField] private Templates templates;
-        public Bars bars;
-        public Lines horizontalLines;
+        [SerializeField] private Bars bars;
+        [SerializeField] private Lines horizontalLines;
+        public Events events;
 
         private List<Item> items = new List<Item>();
         private GameObject itemsFolder;
         private GameObject linesFolder;
-        #endregion
-
-        #region Events
-        public ItemEvent onItemPointerEnter;
-        public ItemEvent onItemPointerExit;
-        public ItemEvent onItemPointerDown;
-        public ItemEvent onItemPointerUp;
-        public ItemEvent onItemPointerClick;
         #endregion
 
         #region Public Methods
@@ -197,23 +190,23 @@ namespace Rosso.Charts.Bar
         }
         private void OnItemPointerEnter(Item item)
         {
-            onItemPointerEnter.Invoke(item);
+            events.onItemPointerEnter.Invoke(item);
         }
         private void OnItemPointerExit(Item item)
         {
-            onItemPointerExit.Invoke(item);
+            events.onItemPointerExit.Invoke(item);
         }
         private void OnItemPointerDown(Item item)
         {
-            onItemPointerDown.Invoke(item);
+            events.onItemPointerDown.Invoke(item);
         }
         private void OnItemPointerUp(Item item)
         {
-            onItemPointerUp.Invoke(item);
+            events.onItemPointerUp.Invoke(item);
         }
         private void OnItemPointerClick(Item item)
         {
-            onItemPointerClick.Invoke(item);
+            events.onItemPointerClick.Invoke(item);
         }
         #endregion
 
@@ -242,6 +235,15 @@ namespace Rosso.Charts.Bar
             public bool showValues;
             public int decimalCount;
             public int count;
+        }
+        [Serializable]
+        public class Events
+        {
+            public ItemEvent onItemPointerEnter;
+            public ItemEvent onItemPointerExit;
+            public ItemEvent onItemPointerDown;
+            public ItemEvent onItemPointerUp;
+            public ItemEvent onItemPointerClick;
         }
         #endregion
     }

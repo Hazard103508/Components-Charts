@@ -9,17 +9,12 @@ namespace Rosso.Charts.Pie
     {
         #region Objects
         [SerializeField] private Templates templates;
+        [SerializeField] private Pie pie;
         [SerializeField] private Label labels;
+        public Events events;
+
         private List<Item> items = new List<Item>();
         private GameObject itemsFolder;
-        #endregion
-
-        #region Events
-        public ItemEvent onItemPointerEnter;
-        public ItemEvent onItemPointerExit;
-        public ItemEvent onItemPointerDown;
-        public ItemEvent onItemPointerUp;
-        public ItemEvent onItemPointerClick;
         #endregion
 
         #region Public Methods
@@ -87,23 +82,23 @@ namespace Rosso.Charts.Pie
         }
         private void OnItemPointerEnter(Item item)
         {
-            onItemPointerEnter.Invoke(item);
+            events.onItemPointerEnter.Invoke(item);
         }
         private void OnItemPointerExit(Item item)
         {
-            onItemPointerExit.Invoke(item);
+            events.onItemPointerExit.Invoke(item);
         }
         private void OnItemPointerDown(Item item)
         {
-            onItemPointerDown.Invoke(item);
+            events.onItemPointerDown.Invoke(item);
         }
         private void OnItemPointerUp(Item item)
         {
-            onItemPointerUp.Invoke(item);
+            events.onItemPointerUp.Invoke(item);
         }
         private void OnItemPointerClick(Item item)
         {
-            onItemPointerClick.Invoke(item);
+            events.onItemPointerClick.Invoke(item);
         }
         #endregion
 
@@ -112,6 +107,11 @@ namespace Rosso.Charts.Pie
         public class Templates
         {
             public GameObject pieSection;
+        }
+        [Serializable]
+        public class Pie
+        {
+            public float spacing;
         }
         [Serializable]
         public class Label
@@ -124,8 +124,19 @@ namespace Rosso.Charts.Pie
             /// Cantidad de decimales a mostrar en el valor
             /// </summary>
             public int decimalCount;
-
-
+            /// <summary>
+            /// Ubicacion proporcional del label
+            /// </summary>
+            public float location;
+        }
+        [Serializable]
+        public class Events
+        {
+            public ItemEvent onItemPointerEnter;
+            public ItemEvent onItemPointerExit;
+            public ItemEvent onItemPointerDown;
+            public ItemEvent onItemPointerUp;
+            public ItemEvent onItemPointerClick;
         }
         public enum ValueType
         {
