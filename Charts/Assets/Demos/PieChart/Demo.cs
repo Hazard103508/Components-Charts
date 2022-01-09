@@ -30,7 +30,7 @@ namespace Rosso.Demo.PieChart
             chartC.Add_Item(new Item("Yellow", 0.879f, Color.yellow));
             chartC.Draw();
 
-            chartD.Add_Item(new Item("English", 17.15f, Color.magenta));
+            chartD.Add_Item(new Item("English", 17.1f, Color.magenta));
             chartD.Add_Item(new Item("French", 15.6f, Color.blue, Color.white));
             chartD.Add_Item(new Item("Italian", 12.3f, Color.yellow));
             chartD.Draw();

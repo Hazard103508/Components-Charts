@@ -55,7 +55,7 @@ namespace Rosso.Charts.Pie
 
                 var section = child.GetComponent<PieSection>();
                 section.Ratio = ratio;
-                section.Initialize(item, rotation, labels);
+                section.Initialize(item, rotation, pie, labels);
                 section.onPointerEnter.AddListener(OnItemPointerEnter);
                 section.onPointerExit.AddListener(OnItemPointerExit);
                 section.onPointerDown.AddListener(OnItemPointerDown);

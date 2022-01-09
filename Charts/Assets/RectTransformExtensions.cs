@@ -28,4 +28,8 @@ public static class RectTransformExtensions
     {
         rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
     }
+    public static float GetLeft(this RectTransform rt) => rt.offsetMin.x;
+    public static float GetRight(this RectTransform rt) => -rt.offsetMax.x;
+    public static float GetTop(this RectTransform rt) => -rt.offsetMax.y;
+    public static float GetBottom(this RectTransform rt) => rt.offsetMax.y;
 }
