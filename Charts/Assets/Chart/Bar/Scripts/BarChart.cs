@@ -19,6 +19,14 @@ namespace Rosso.Charts.Bar
         private GameObject linesFolder;
         #endregion
 
+        #region Events
+        public ItemEvent onBarPointerEnter;
+        public ItemEvent onBarPointerExit;
+        public ItemEvent onBarPointerDown;
+        public ItemEvent onBarPointerUp;
+        public ItemEvent onBarPointerClick;
+        #endregion
+
         #region Public Methods
         /// <summary>
         /// Restaura el chart al estado inicial
@@ -51,6 +59,9 @@ namespace Rosso.Charts.Bar
             Add_Bars(maxHeight);
             Add_HorizontalLines(maxHeight);
         }
+        #endregion
+
+        #region Private Methods
         /// <summary>
         /// Agrega la carpeta para los items
         /// </summary>
@@ -94,7 +105,6 @@ namespace Rosso.Charts.Bar
                     int n = char.IsNumber(_current) ? 1 : 2;
 
                     string _strNumber = string.Join("", strMax.Take(i + n).ToArray());
-
                     float.TryParse(_strNumber, out _newNumber);
 
                     if (_newNumber % 1 != 0)
@@ -115,7 +125,6 @@ namespace Rosso.Charts.Bar
 
             return _newNumber;
         }
-
         /// <summary>
         /// Dibuja las baras
         /// </summary>
@@ -125,10 +134,10 @@ namespace Rosso.Charts.Bar
             Add_ItemsFolder();
 
             var rec = (RectTransform)transform;
-            Vector2 backgroundSize = rec.sizeDelta - new Vector2(this.bars.padding.left + this.bars.padding.right, this.bars.padding.top + this.bars.padding.bottom) - new Vector2((this.items.Count - 1) * this.bars.spacing, 0);
+            Vector2 backgroundSize = new Vector2(rec.rect.width, rec.rect.height) - new Vector2(this.bars.padding.left + this.bars.padding.right, this.bars.padding.top + this.bars.padding.bottom) - new Vector2((this.items.Count - 1) * this.bars.spacing, 0);
             float barWidth = backgroundSize.x / this.items.Count;
 
-            Vector2 startPos = new Vector2(this.bars.padding.left, this.bars.padding.bottom) - new Vector2(rec.sizeDelta.x / 2, rec.sizeDelta.y / 2);
+            Vector2 startPos = new Vector2(this.bars.padding.left, this.bars.padding.bottom) - new Vector2(rec.rect.width, rec.rect.height) / 2;
             this.items.ForEach(item =>
             {
                 var child = Instantiate(templates.bar, itemsFolder.transform);
@@ -140,6 +149,11 @@ namespace Rosso.Charts.Bar
                 cRec.sizeDelta = new Vector2(barWidth, barHeight);
 
                 var barItem = child.GetComponent<Bar>();
+                barItem.onPointerEnter.AddListener(OnBarPointerEnter);
+                barItem.onPointerExit.AddListener(OnBarPointerExit);
+                barItem.onPointerDown.AddListener(OnBarPointerDown);
+                barItem.onPointerUp.AddListener(OnBarPointerUp);
+                barItem.onPointerClick.AddListener(OnBarPointerClick);
                 barItem.Initialize(item, this.bars);
 
                 startPos += new Vector2(barWidth + this.bars.spacing, 0);
@@ -154,7 +168,7 @@ namespace Rosso.Charts.Bar
             Add_LineFolder();
 
             var rec = (RectTransform)transform;
-            Vector2 backgroundSize = rec.sizeDelta - new Vector2(this.bars.padding.left + this.bars.padding.right, this.bars.padding.top + this.bars.padding.bottom);
+            Vector2 backgroundSize = new Vector2(rec.rect.width, rec.rect.height) - new Vector2(this.bars.padding.left + this.bars.padding.right, this.bars.padding.top + this.bars.padding.bottom);
 
             var vertical = linesFolder.AddComponent<VerticalLayoutGroup>();
             vertical.padding.right = this.bars.padding.right;
@@ -181,7 +195,28 @@ namespace Rosso.Charts.Bar
                 line.Initialize(value, this.bars.padding.left, this.horizontalLines, height);
             }
         }
+        private void OnBarPointerEnter(Item item)
+        {
+            onBarPointerEnter.Invoke(item);
+        }
+        private void OnBarPointerExit(Item item)
+        {
+            onBarPointerExit.Invoke(item);
+        }
+        private void OnBarPointerDown(Item item)
+        {
+            onBarPointerDown.Invoke(item);
+        }
+        private void OnBarPointerUp(Item item)
+        {
+            onBarPointerUp.Invoke(item);
+        }
+        private void OnBarPointerClick(Item item)
+        {
+            onBarPointerClick.Invoke(item);
+        }
         #endregion
+
 
         #region Structures
         [Serializable]

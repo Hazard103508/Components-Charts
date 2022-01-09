@@ -214,7 +214,7 @@ MonoBehaviour:
       m_Top: 45
       m_Bottom: 80
     spacing: 10
-    defaultColor: {r: 1, g: 0, b: 0, a: 0.78431374}
+    defaultColor: {r: 0.11485406, g: 0.38539848, b: 0.8396226, a: 0.78431374}
     showLabel: 1
     showValue: 1
     decimalCount: 1
