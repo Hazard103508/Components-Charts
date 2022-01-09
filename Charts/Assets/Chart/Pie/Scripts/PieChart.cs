@@ -48,7 +48,7 @@ namespace Rosso.Charts.Pie
 
             this.items = this.items.Where(i => i.Value > 0).ToList();
 
-            float ratio = (((RectTransform)transform).sizeDelta / 2).x;
+            float ratio = ((RectTransform)transform).rect.width / 2;
             float totalValue = this.items.Any() ? this.items.Sum(item => item.Value) : 0;
             float rotation = 0;
 
