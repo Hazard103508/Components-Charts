@@ -2,6 +2,13 @@ using UnityEngine;
 
 public static class RectTransformExtensions
 {
+    public static void SetAll(this RectTransform rt, RectOffset rect)
+    {
+        rt.SetTop(rect.top);
+        rt.SetBottom(rect.bottom);
+        rt.SetLeft(rect.left);
+        rt.SetRight(rect.right);
+    }
     public static void SetLeft(this RectTransform rt, float left)
     {
         rt.offsetMin = new Vector2(left, rt.offsetMin.y);
