@@ -35,6 +35,27 @@ namespace Rosso.Demo.PieChart
             chartD.Add_Item(new Item("Italian", 12.3f, Color.yellow));
             chartD.Draw();
         }
+
+        public void OnItemPointerEnter(Item item)
+        {
+            print($"Pointer Enter: {item.Label} - {item.Value} ({item.PercentageVaue.ToString("P")})");
+        }
+        public void OnItemPointerExit(Item item)
+        {
+            print($"Pointer Exit:  {item.Label} - {item.Value} ({item.PercentageVaue.ToString("P")})");
+        }
+        public void OnItemPointerDown(Item item)
+        {
+            print($"Pointer Down:  {item.Label} - {item.Value} ({item.PercentageVaue.ToString("P")})");
+        }
+        public void OnItemPointerUp(Item item)
+        {
+            print($"Pointer Up:  {item.Label} - {item.Value} ({item.PercentageVaue.ToString("P")})");
+        }
+        public void OnItemPointerClick(Item item)
+        {
+            print($"Pointer Click:  {item.Label} - {item.Value} ({item.PercentageVaue.ToString("P")})");
+        }
     }
 }
 

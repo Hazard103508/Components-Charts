@@ -20,11 +20,11 @@ namespace Rosso.Charts.Bar
         #endregion
 
         #region Events
-        public ItemEvent onBarPointerEnter;
-        public ItemEvent onBarPointerExit;
-        public ItemEvent onBarPointerDown;
-        public ItemEvent onBarPointerUp;
-        public ItemEvent onBarPointerClick;
+        public ItemEvent onItemPointerEnter;
+        public ItemEvent onItemPointerExit;
+        public ItemEvent onItemPointerDown;
+        public ItemEvent onItemPointerUp;
+        public ItemEvent onItemPointerClick;
         #endregion
 
         #region Public Methods
@@ -149,11 +149,11 @@ namespace Rosso.Charts.Bar
                 cRec.sizeDelta = new Vector2(barWidth, barHeight);
 
                 var barItem = child.GetComponent<Bar>();
-                barItem.onPointerEnter.AddListener(OnBarPointerEnter);
-                barItem.onPointerExit.AddListener(OnBarPointerExit);
-                barItem.onPointerDown.AddListener(OnBarPointerDown);
-                barItem.onPointerUp.AddListener(OnBarPointerUp);
-                barItem.onPointerClick.AddListener(OnBarPointerClick);
+                barItem.onPointerEnter.AddListener(OnItemPointerEnter);
+                barItem.onPointerExit.AddListener(OnItemPointerExit);
+                barItem.onPointerDown.AddListener(OnItemPointerDown);
+                barItem.onPointerUp.AddListener(OnItemPointerUp);
+                barItem.onPointerClick.AddListener(OnItemPointerClick);
                 barItem.Initialize(item, this.bars);
 
                 startPos += new Vector2(barWidth + this.bars.spacing, 0);
@@ -195,25 +195,25 @@ namespace Rosso.Charts.Bar
                 line.Initialize(value, this.bars.padding.left, this.horizontalLines, height);
             }
         }
-        private void OnBarPointerEnter(Item item)
+        private void OnItemPointerEnter(Item item)
         {
-            onBarPointerEnter.Invoke(item);
+            onItemPointerEnter.Invoke(item);
         }
-        private void OnBarPointerExit(Item item)
+        private void OnItemPointerExit(Item item)
         {
-            onBarPointerExit.Invoke(item);
+            onItemPointerExit.Invoke(item);
         }
-        private void OnBarPointerDown(Item item)
+        private void OnItemPointerDown(Item item)
         {
-            onBarPointerDown.Invoke(item);
+            onItemPointerDown.Invoke(item);
         }
-        private void OnBarPointerUp(Item item)
+        private void OnItemPointerUp(Item item)
         {
-            onBarPointerUp.Invoke(item);
+            onItemPointerUp.Invoke(item);
         }
-        private void OnBarPointerClick(Item item)
+        private void OnItemPointerClick(Item item)
         {
-            onBarPointerClick.Invoke(item);
+            onItemPointerClick.Invoke(item);
         }
         #endregion
 

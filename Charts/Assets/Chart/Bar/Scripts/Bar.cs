@@ -21,7 +21,7 @@ namespace Rosso.Charts.Bar
         public ItemEvent onPointerClick = new ItemEvent();
         #endregion
 
-        #region Unity Events
+        #region Unity Methods
         public void OnPointerEnter(PointerEventData eventData)
         {
             onPointerEnter.Invoke(this.item);

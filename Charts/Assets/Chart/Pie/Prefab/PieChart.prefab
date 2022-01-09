@@ -295,9 +295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b52f627409d884b8c15967c5594d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieSectionTemplate: {fileID: 7654736353200802314}
-  textConfig:
-    valueType: 0
+  templates:
+    pieSection: {fileID: 7654736353200802314}
+  labels:
+    valueType: 1
     decimalCount: 0
   onSelectItem:
     m_PersistentCalls:

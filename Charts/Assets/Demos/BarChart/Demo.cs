@@ -1,6 +1,4 @@
 using Rosso.Charts.Bar;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Rosso.Demo.BarChart
@@ -39,25 +37,25 @@ namespace Rosso.Demo.BarChart
             chartC.Draw();
         }
 
-        public void OnBarPointerEnter(Item item)
+        public void OnItemPointerEnter(Item item)
         {
-            print($"Pointer Enter: {item.Label}");
+            print($"Pointer Enter: {item.Label} - {item.Value}");
         }
-        public void OnBarPointerExit(Item item)
+        public void OnItemPointerExit(Item item)
         {
-            print($"Pointer Exit: {item.Label}");
+            print($"Pointer Exit: {item.Label} - {item.Value}");
         }
-        public void OnBarPointerDown(Item item)
+        public void OnItemPointerDown(Item item)
         {
-            print($"Pointer Down: {item.Label}");
+            print($"Pointer Down: {item.Label} - {item.Value}");
         }
-        public void OnBarPointerUp(Item item)
+        public void OnItemPointerUp(Item item)
         {
-            print($"Pointer Up: {item.Label}");
+            print($"Pointer Up: {item.Label} - {item.Value}");
         }
-        public void OnBarPointerClick(Item item)
+        public void OnItemPointerClick(Item item)
         {
-            print($"Pointer Click: {item.Label}");
+            print($"Pointer Click: {item.Label} - {item.Value}");
         }
     }
 }

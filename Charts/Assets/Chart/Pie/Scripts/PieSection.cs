@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Rosso.Charts.Pie
 {
-    public class PieSection : MonoBehaviour, ICanvasRaycastFilter, IPointerEnterHandler
+    public class PieSection : MonoBehaviour, ICanvasRaycastFilter, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         #region Objects
         [SerializeField] private Image image;
@@ -13,7 +13,11 @@ namespace Rosso.Charts.Pie
         #endregion
 
         #region Events
-        public ItemEvent onSelectItem;
+        public ItemEvent onPointerEnter = new ItemEvent();
+        public ItemEvent onPointerExit = new ItemEvent();
+        public ItemEvent onPointerDown = new ItemEvent();
+        public ItemEvent onPointerUp = new ItemEvent();
+        public ItemEvent onPointerClick = new ItemEvent();
         #endregion
 
         #region Properties
@@ -26,7 +30,23 @@ namespace Rosso.Charts.Pie
         #region Unity Methods
         public void OnPointerEnter(PointerEventData eventData)
         {
-            onSelectItem.Invoke(this.item);
+            onPointerEnter.Invoke(this.item);
+        }
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            onPointerExit.Invoke(this.item);
+        }
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            onPointerDown.Invoke(this.item);
+        }
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            onPointerUp.Invoke(this.item);
+        }
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            onPointerClick.Invoke(this.item);
         }
         public bool IsRaycastLocationValid(Vector2 sp, Camera eventCamera)
         {
@@ -54,7 +74,7 @@ namespace Rosso.Charts.Pie
         /// <param name="item">Item a agregar al grafico</param>
         /// <param name="rotation">Rotacion inicial que tendra la seecion del grafico</param>
         /// <param name="config">configuracion adicional</param>
-        public void Initialize(Item item, float rotation, TextConfig config)
+        public void Initialize(Item item, float rotation, Rosso.Charts.Pie.PieChart.Label labels)
         {
             this.item = item;
             image.color = item.Color;
@@ -70,10 +90,10 @@ namespace Rosso.Charts.Pie
                 label.transform.localPosition = direction * (Ratio * 0.5f);
             }
 
-            if (config.valueType == TextConfig.ValueType.Percentage)
-                label.text = (image.fillAmount * 100).ToString($"f{config.decimalCount}") + "%";
+            if (labels.valueType == Rosso.Charts.Pie.PieChart.ValueType.Percentage)
+                label.text = (image.fillAmount * 100).ToString($"f{labels.decimalCount}") + "%";
             else
-                label.text = this.item.Value.ToString($"f{config.decimalCount}");
+                label.text = this.item.Value.ToString($"f{labels.decimalCount}");
 
             label.color = item.ColorText;
         }

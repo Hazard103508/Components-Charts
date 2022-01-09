@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,14 +8,18 @@ namespace Rosso.Charts.Pie
     public class PieChart : MonoBehaviour
     {
         #region Objects
-        [SerializeField] private GameObject pieSectionTemplate;
-        [SerializeField] private TextConfig textConfig;
+        [SerializeField] private Templates templates;
+        [SerializeField] private Label labels;
         private List<Item> items = new List<Item>();
         private GameObject itemsFolder;
         #endregion
 
         #region Events
-        public ItemEvent onSelectItem;
+        public ItemEvent onItemPointerEnter;
+        public ItemEvent onItemPointerExit;
+        public ItemEvent onItemPointerDown;
+        public ItemEvent onItemPointerUp;
+        public ItemEvent onItemPointerClick;
         #endregion
 
         #region Public Methods
@@ -39,12 +44,7 @@ namespace Rosso.Charts.Pie
         /// </summary>
         public void Draw()
         {
-            itemsFolder = new GameObject("Items");
-            itemsFolder.transform.SetParent(this.transform);
-            var rec = itemsFolder.AddComponent<RectTransform>();
-            rec.anchorMin = new Vector2(0, 0);
-            rec.anchorMax = new Vector2(1, 1);
-            rec.SetAll(new RectOffset());
+            Add_ItemsFolder();
 
             this.items = this.items.Where(i => i.Value > 0).ToList();
 
@@ -54,14 +54,18 @@ namespace Rosso.Charts.Pie
 
             this.items.ForEach(item =>
             {
-                var child = Instantiate(pieSectionTemplate, itemsFolder.transform);
+                var child = Instantiate(templates.pieSection, itemsFolder.transform);
                 child.name = "Item - " + item.Label;
                 item.PercentageVaue = totalValue != 0 ? item.Value / totalValue : 0;
 
                 var section = child.GetComponent<PieSection>();
                 section.Ratio = ratio;
-                section.Initialize(item, rotation, textConfig);
-                section.onSelectItem.AddListener(OnSelectItem);
+                section.Initialize(item, rotation, labels);
+                section.onPointerEnter.AddListener(OnItemPointerEnter);
+                section.onPointerExit.AddListener(OnItemPointerExit);
+                section.onPointerDown.AddListener(OnItemPointerDown);
+                section.onPointerUp.AddListener(OnItemPointerUp);
+                section.onPointerClick.AddListener(OnItemPointerClick);
 
                 rotation += item.PercentageVaue * 360;
             });
@@ -69,9 +73,64 @@ namespace Rosso.Charts.Pie
         #endregion
 
         #region Private Methods
-        private void OnSelectItem(Item item)
+        /// <summary>
+        /// Agrega la carpeta para los items
+        /// </summary>
+        private void Add_ItemsFolder()
         {
-            onSelectItem.Invoke(item);
+            itemsFolder = new GameObject("Items");
+            itemsFolder.transform.SetParent(this.transform);
+            var rec = itemsFolder.AddComponent<RectTransform>();
+            rec.anchorMin = new Vector2(0, 0);
+            rec.anchorMax = new Vector2(1, 1);
+            rec.SetAll(new RectOffset());
+        }
+        private void OnItemPointerEnter(Item item)
+        {
+            onItemPointerEnter.Invoke(item);
+        }
+        private void OnItemPointerExit(Item item)
+        {
+            onItemPointerExit.Invoke(item);
+        }
+        private void OnItemPointerDown(Item item)
+        {
+            onItemPointerDown.Invoke(item);
+        }
+        private void OnItemPointerUp(Item item)
+        {
+            onItemPointerUp.Invoke(item);
+        }
+        private void OnItemPointerClick(Item item)
+        {
+            onItemPointerClick.Invoke(item);
+        }
+        #endregion
+
+        #region Structures
+        [Serializable]
+        public class Templates
+        {
+            public GameObject pieSection;
+        }
+        [Serializable]
+        public class Label
+        {
+            /// <summary>
+            /// Tipo de valor a mostrar en el grafico
+            /// </summary>
+            public ValueType valueType;
+            /// <summary>
+            /// Cantidad de decimales a mostrar en el valor
+            /// </summary>
+            public int decimalCount;
+
+
+        }
+        public enum ValueType
+        {
+            Percentage,
+            Original
         }
         #endregion
     }
