@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5971973325436049351}
   - component: {fileID: 1908186959689550373}
   m_Layer: 5
-  m_Name: Mask
+  m_Name: DonutMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -100, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3327368641104055374
 CanvasRenderer:
@@ -61,14 +61,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1efe41e1f673dde46b45e531da331aca, type: 3}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -214,9 +214,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7654736353200802315}
-  - component: {fileID: 7654736353200802312}
+  - component: {fileID: 5260187530914871722}
+  - component: {fileID: 3375436918242649853}
+  - component: {fileID: 9172952563196567588}
   m_Layer: 5
-  m_Name: PieSection
+  m_Name: DonutSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +245,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7654736353200802312
+--- !u!114 &5260187530914871722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,11 +254,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 7654736353200802314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc86be6fabb5e2d42b576f9bfe8e1c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask: {fileID: 5971973325436049351}
-  image: {fileID: 7654736354476722907}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3375436918242649853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654736353200802314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4eb227b5b20b9240a8df98c0f407c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  donutMask: {fileID: 5971973325436049351}
+  image: {fileID: 952286801876556418}
   label: {fileID: 7654736352939330673}
   onPointerEnter:
     m_PersistentCalls:
@@ -273,6 +305,14 @@ MonoBehaviour:
   onPointerClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!222 &9172952563196567588
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654736353200802314}
+  m_CullTransparentMesh: 1
 --- !u!1 &7654736354238248059
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,11 +322,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7654736354238248056}
-  - component: {fileID: 3709591866952585382}
-  - component: {fileID: 8407743592284087229}
-  - component: {fileID: 356891501691675293}
+  - component: {fileID: 5981092310929945013}
+  - component: {fileID: 2124213358}
+  - component: {fileID: 4137323998267705959}
   m_Layer: 5
-  m_Name: PieChart
+  m_Name: DonutChart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,15 +352,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3709591866952585382
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7654736354238248059}
-  m_CullTransparentMesh: 1
---- !u!114 &8407743592284087229
+--- !u!114 &5981092310929945013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,7 +382,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &356891501691675293
+--- !u!114 &2124213358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,17 +391,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7654736354238248059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b52f627409d884b8c15967c5594d5a, type: 3}
+  m_Script: {fileID: 11500000, guid: ae2a7bfc33d3d7b4782918c8648247a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   templates:
-    pieSection: {fileID: 7654736353200802314}
-  pie:
-    spacing: 0
-    valueFormat: '{0}'
+    donutSection: {fileID: 7654736353200802314}
+  donut:
+    borderAngle: 0
+    donutRatio: 0.8
   labels:
     valueType: 1
-    location: 0.5
+    location: 0.9
     Format: '{0}'
   events:
     onItemPointerEnter:
@@ -387,6 +419,14 @@ MonoBehaviour:
     onItemPointerClick:
       m_PersistentCalls:
         m_Calls: []
+--- !u!222 &4137323998267705959
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654736354238248059}
+  m_CullTransparentMesh: 1
 --- !u!1 &7654736354476722885
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7654736354476722906}
   - component: {fileID: 7654736354476722904}
-  - component: {fileID: 7654736354476722907}
+  - component: {fileID: 952286801876556418}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -422,7 +462,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: -10}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7654736354476722904
 CanvasRenderer:
@@ -432,7 +472,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654736354476722885}
   m_CullTransparentMesh: 1
---- !u!114 &7654736354476722907
+--- !u!114 &952286801876556418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,19 +481,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7654736354476722885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b529500fe424c742a48ae101e9ec1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1efe41e1f673dde46b45e531da331aca, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

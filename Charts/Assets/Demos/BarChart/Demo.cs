@@ -22,7 +22,7 @@ namespace Rosso.Demo.BarChart
             chartB.Add_Item(new Item("Red", 0.2f, Color.red));
             chartB.Add_Item(new Item("Blue", 1.2f, Color.blue, Color.white));
             chartB.Add_Item(new Item("Yellow", 0.8f, Color.yellow));
-            chartB.Add_Item(new Item("Black", 0.9f, Color.black));
+            chartB.Add_Item(new Item("Gray", 0.9f, Color.gray));
             chartB.Add_Item(new Item("White", 0.6f, Color.white));
             chartB.Add_Item(new Item("Orange", 1f, new Color(255/255f, 69/255f, 0)));
             chartB.Add_Item(new Item("Cyan", 0.3f, Color.cyan));

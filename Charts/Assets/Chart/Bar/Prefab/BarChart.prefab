@@ -215,14 +215,26 @@ MonoBehaviour:
       m_Bottom: 80
     spacing: 10
     defaultColor: {r: 0.11485406, g: 0.38539848, b: 0.8396226, a: 0.78431374}
-    showLabel: 1
-    showValue: 1
-    decimalCount: 1
+    valueFormat: '{0}'
   horizontalLines:
-    showLines: 1
-    showValues: 1
-    decimalCount: 0
-    count: 4
+    valueFormat: '{0}'
+    count: 5
+  events:
+    onItemPointerEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    onItemPointerExit:
+      m_PersistentCalls:
+        m_Calls: []
+    onItemPointerDown:
+      m_PersistentCalls:
+        m_Calls: []
+    onItemPointerUp:
+      m_PersistentCalls:
+        m_Calls: []
+    onItemPointerClick:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &6294535898283031139
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +533,21 @@ MonoBehaviour:
   image: {fileID: 6294535899396330949}
   value: {fileID: 6294535898588388987}
   label: {fileID: 6294535897490715408}
+  onPointerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onPointerClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &6294535899233437517
 CanvasRenderer:
   m_ObjectHideFlags: 0

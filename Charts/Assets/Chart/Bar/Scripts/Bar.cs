@@ -45,18 +45,17 @@ namespace Rosso.Charts.Bar
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Inicializa la barra
+        /// </summary>
+        /// <param name="item">Item asociado a la bara</param>
+        /// <param name="bars">configuracion de la barra</param>
         public void Initialize(Item item, Rosso.Charts.Bar.BarChart.Bars bars)
         {
             this.item = item;
             this.image.color = item.color.HasValue ? item.color.Value : bars.defaultColor;
-            this.value.text = item.Value.ToString($"f{bars.decimalCount}");
+            this.value.text = string.Format(bars.valueFormat, item.Value);
             this.label.text = item.Label;
-
-            if (!bars.showValue)
-                this.value.gameObject.SetActive(false);
-
-            if (!bars.showLabel)
-                this.label.gameObject.SetActive(false);
         }
         #endregion
     }

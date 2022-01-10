@@ -4,13 +4,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Rosso.Charts.Pie
+namespace Rosso.Charts.Donut
 {
-    public class PieChart : MonoBehaviour
+    public class DonutChart : MonoBehaviour
     {
         #region Objects
         [SerializeField] private Templates templates;
-        [SerializeField] private Pie pie;
+        [SerializeField] private Donut donut;
         [SerializeField] private Label labels;
         public Events events;
 
@@ -50,13 +50,13 @@ namespace Rosso.Charts.Pie
 
             this.items.ForEach(item =>
             {
-                var child = Instantiate(templates.pieSection, itemsFolder.transform);
+                var child = Instantiate(templates.donutSection, itemsFolder.transform);
                 child.name = "Item - " + item.Label;
                 item.PercentageVaue = totalValue != 0 ? item.Value / totalValue : 0;
 
-                var section = child.GetComponent<PieSection>();
+                var section = child.GetComponent<DonutSection>();
                 section.Ratio = ratio;
-                section.Initialize(item, rotation, pie, labels);
+                section.Initialize(item, rotation, donut, labels);
                 section.onPointerEnter.AddListener(OnItemPointerEnter);
                 section.onPointerExit.AddListener(OnItemPointerExit);
                 section.onPointerDown.AddListener(OnItemPointerDown);
@@ -109,12 +109,14 @@ namespace Rosso.Charts.Pie
         [Serializable]
         public class Templates
         {
-            public GameObject pieSection;
+            public GameObject donutSection;
         }
         [Serializable]
-        public class Pie
+        public class Donut
         {
-            public float spacing;
+            public float borderAngle;
+            [Range(0, 1)]
+            public float donutRatio;
         }
         [Serializable]
         public class Label
@@ -144,7 +146,7 @@ namespace Rosso.Charts.Pie
         public enum ValueType
         {
             Percentage,
-            Original,
+            Original
         }
         #endregion
     }

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public static class RectTransformExtensions
 {
-    public static void SetAll(this RectTransform rt, RectOffset rect)
+    public static void SetAll(this RectTransform rt, float left, float right, float top, float bottom)
     {
-        rt.SetTop(rect.top);
-        rt.SetBottom(rect.bottom);
-        rt.SetLeft(rect.left);
-        rt.SetRight(rect.right);
+        rt.SetLeft(left);
+        rt.SetRight(right);
+        rt.SetTop(top);
+        rt.SetBottom(bottom);
     }
     public static void SetLeft(this RectTransform rt, float left)
     {

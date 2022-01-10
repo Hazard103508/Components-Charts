@@ -65,7 +65,7 @@ namespace Rosso.Charts.Bar
             var rec = itemsFolder.AddComponent<RectTransform>();
             rec.anchorMin = new Vector2(0, 0);
             rec.anchorMax = new Vector2(1, 1);
-            rec.SetAll(new RectOffset());
+            rec.SetAll(0, 0, 0, 0);
         }
         /// <summary>
         /// Agrega la carpeta para las lineas
@@ -77,7 +77,7 @@ namespace Rosso.Charts.Bar
             var rec = linesFolder.AddComponent<RectTransform>();
             rec.anchorMin = new Vector2(0, 0);
             rec.anchorMax = new Vector2(1, 1);
-            rec.SetAll(new RectOffset());
+            rec.SetAll(0, 0, 0, 0);
         }
         /// <summary>
         /// Obtiene la maxima altura de las barras
@@ -224,16 +224,12 @@ namespace Rosso.Charts.Bar
             public RectOffset padding;
             public float spacing;
             public Color defaultColor;
-            public bool showLabel;
-            public bool showValue;
-            public int decimalCount;
+            public string valueFormat;
         }
         [Serializable]
         public class Lines
         {
-            public bool showLines;
-            public bool showValues;
-            public int decimalCount;
+            public string valueFormat;
             public int count;
         }
         [Serializable]
